@@ -682,3 +682,66 @@ echo "内存使用率: $(($memory_use*100/$memory_total))%"
 echo "内存使用率：`echo "scale=2; $memory_use*100/$memory_total"|bc`%"
 ```
 
+## FOR循环
+
+### 类c语言方式
+
+```powershell
+for ((i=1; i<=100; i ++))
+do
+	echo $i
+done
+```
+
+### in使用方式
+
+```powershell
+for i in {1..100}
+do
+    echo $i
+done
+```
+
+###  seq使用
+
+```powershell
+for i in `seq 1 100`
+do 
+  echo $i
+done
+```
+
+
+
+## while循环
+
+### 方括号[]方式，且注意空格
+
+```powershell
+min=1
+max=100
+while [ $min -le $max]
+do
+	echo $min
+	min=`expr $min+1`
+done
+```
+
+双括号方式
+
+示例：
+
+```powershell
+#!/bin/bash
+i=1
+while(($i<100))
+do
+    if(($i%4==0))
+    then
+        echo $i
+    fi
+    i=$(($i+1))
+done
+```
+
+
