@@ -682,66 +682,57 @@ echo "内存使用率: $(($memory_use*100/$memory_total))%"
 echo "内存使用率：`echo "scale=2; $memory_use*100/$memory_total"|bc`%"
 ```
 
-## FOR循环
+## 七、for循环
 
-### 类c语言方式
+### 1、列表循环
 
-```powershell
-for ((i=1; i<=100; i ++))
-do
-	echo $i
-done
+> 列表for循环：用于将一组命令执行**已知的次数**
+
+举例：
+
+```shell
+# for var in {1..10};do echo $var;done
+
+# for var in 1 2 3 4 5;do echo $var;done
+
+# for var in `seq 10`;do echo $var;done
+
+# for var in $(seq 10);do echo $var;done
+
+# for var in {0..10..2};do echo $var;done
+
+# for var in {2..10..2};do echo $var;done
+
+# for var in {10..1};do echo $var;done
+
+# for var in {10..1..-2};do echo $var;done
+
+# for var in `seq 10 -2 1`;do echo $var;done
 ```
 
-### in使用方式
+### 2、不带列表循环
 
-```powershell
-for i in {1..100}
-do
-    echo $i
-done
-```
+> 不带列表的for循环执行时由**用户指定参数和参数的个数**
 
-###  seq使用
+举例：
 
-```powershell
-for i in `seq 1 100`
-do 
-  echo $i
-done
-```
-
-
-
-## while循环
-
-### 方括号[]方式，且注意空格
-
-```powershell
-min=1
-max=100
-while [ $min -le $max]
-do
-	echo $min
-	min=`expr $min+1`
-done
-```
-
-双括号方式
-
-示例：
-
-```powershell
+```shell
 #!/bin/bash
-i=1
-while(($i<100))
+for var
 do
-    if(($i%4==0))
-    then
-        echo $i
-    fi
-    i=$(($i+1))
+echo $var
 done
+
+echo "脚本后面有$#个参数"
 ```
 
+### 3、类C风格的for循环
+
+```shell
+  for ((i=1;i<=5;i++));do echo $i;done
+ 
+  for ((i=1;i<=10;i+=2));do echo $i;done
+ 
+  for ((i=2;i<=10;i+=2));do echo $i;done
+```
 
